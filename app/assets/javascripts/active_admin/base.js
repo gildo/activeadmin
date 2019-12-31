@@ -185,7 +185,8 @@
         return;
       }
       var defaults = {
-        dateFormat: "yy-mm-dd"
+        dateFormat: "dd-mm-
+        "
       };
       var options = input.data("datepicker-options");
       input.datepicker($.extend(defaults, options));
