@@ -36,7 +36,7 @@ module ActiveAdmin
                             nil
                           end
           { placeholder: placeholder,
-            value: current_value ? current_value.strftime("%Y-%m-%d") : "" }.merge(input_html_options)
+            value: current_value ? current_value.strftime("%d-%m-%Y") : "" }.merge(input_html_options)
         end
 
         def gt_input_placeholder
