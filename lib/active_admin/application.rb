@@ -1,6 +1,6 @@
-require 'active_admin/router'
-require 'active_admin/application_settings'
-require 'active_admin/namespace_settings'
+require "active_admin/router"
+require "active_admin/application_settings"
+require "active_admin/namespace_settings"
 
 module ActiveAdmin
   class Application
@@ -45,8 +45,8 @@ module ActiveAdmin
     include AssetRegistration
 
     # Event that gets triggered on load of Active Admin
-    BeforeLoadEvent = 'active_admin.application.before_load'.freeze
-    AfterLoadEvent  = 'active_admin.application.after_load'.freeze
+    BeforeLoadEvent = "active_admin.application.before_load".freeze
+    AfterLoadEvent = "active_admin.application.after_load".freeze
 
     # Runs before the app's AA initializer
     def setup!
@@ -112,9 +112,9 @@ module ActiveAdmin
     def load!
       unless loaded?
         ActiveSupport::Notifications.publish BeforeLoadEvent, self # before_load hook
-        files.each { |file| load file }                            # load files
-        namespace(default_namespace)                               # init AA resources
-        ActiveSupport::Notifications.publish AfterLoadEvent, self  # after_load hook
+        files.each { |file| load file } # load files
+        namespace(default_namespace) # init AA resources
+        ActiveSupport::Notifications.publish AfterLoadEvent, self # after_load hook
         @@loaded = true
       end
     end
@@ -125,7 +125,7 @@ module ActiveAdmin
 
     # Returns ALL the files to be loaded
     def files
-      load_paths.flatten.compact.uniq.flat_map { |path| Dir["#{path}/**/*.rb"] }
+      load_paths.flatten.compact.uniq.flat_map { |path| Dir["#{path}/**/*.rb"] }.sort
     end
 
     # Creates all the necessary routes for the ActiveAdmin configurations
@@ -164,9 +164,9 @@ module ActiveAdmin
     private
 
     def register_default_assets
-      register_stylesheet 'active_admin.css', media: 'screen'
-      register_stylesheet 'active_admin/print.css', media: 'print'
-      register_javascript 'active_admin.js'
+      register_stylesheet "active_admin.css", media: "screen"
+      register_stylesheet "active_admin/print.css", media: "print"
+      register_javascript "active_admin.js"
     end
 
     # Since app/admin is alphabetically before app/models, we have to remove it
@@ -176,7 +176,7 @@ module ActiveAdmin
     # files from being loaded twice in production.
     def remove_active_admin_load_paths_from_rails_autoload_and_eager_load
       ActiveSupport::Dependencies.autoload_paths -= load_paths
-      Rails.application.config.eager_load_paths  -= load_paths
+      Rails.application.config.eager_load_paths -= load_paths
     end
 
     # Hook into the Rails code reloading mechanism so that things are reloaded

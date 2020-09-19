@@ -4,12 +4,12 @@ module ActiveAdmin
       extend ActiveSupport::Concern
 
       ACTIONS_DICTIONARY = {
-        index:   ActiveAdmin::Authorization::READ,
-        show:    ActiveAdmin::Authorization::READ,
-        new:     ActiveAdmin::Authorization::CREATE,
-        create:  ActiveAdmin::Authorization::CREATE,
-        edit:    ActiveAdmin::Authorization::UPDATE,
-        update:  ActiveAdmin::Authorization::UPDATE,
+        index: ActiveAdmin::Authorization::READ,
+        show: ActiveAdmin::Authorization::READ,
+        new: ActiveAdmin::Authorization::CREATE,
+        create: ActiveAdmin::Authorization::CREATE,
+        edit: ActiveAdmin::Authorization::UPDATE,
+        update: ActiveAdmin::Authorization::UPDATE,
         destroy: ActiveAdmin::Authorization::DESTROY
       }
 
@@ -112,9 +112,9 @@ module ActiveAdmin
             redirect_backwards_or_to_root
           end
 
-          format.csv  { render body:          error,           status: :unauthorized }
-          format.json { render json: { error: error },         status: :unauthorized }
-          format.xml  { render xml: "<error>#{error}</error>", status: :unauthorized }
+          format.csv { render body: error, status: :unauthorized }
+          format.json { render json: { error: error }, status: :unauthorized }
+          format.xml { render xml: "<error>#{error}</error>", status: :unauthorized }
         end
       end
 

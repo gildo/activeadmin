@@ -10,7 +10,7 @@ require:
 
 AllCops:
   DisabledByDefault: true
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
 
   Exclude:
     - tmp/development_apps/**/*
@@ -28,6 +28,9 @@ AllCops:
   StyleGuideCopsOnly: false
 
 Layout/EndAlignment:
+  Enabled: true
+
+Layout/HashAlignment:
   Enabled: true
 
 Lint/ParenthesesAsGroupedExpression:
@@ -55,13 +58,37 @@ Layout/EndOfLine:
   Enabled: true
 
 Layout/ExtraSpacing:
+  AllowForAlignment: false
   Enabled: true
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/FirstParameterIndentation:
+  Enabled: true
+
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
 
 Rails/FilePath:
   Enabled: true
   EnforcedStyle: slashes
 
+RSpec/EmptyLineAfterExample:
+  Enabled: true
+
+RSpec/EmptyLineAfterExampleGroup:
+  Enabled: true
+
 RSpec/HookArgument:
+  Enabled: true
+
+Style/BlockDelimiters:
   Enabled: true
 
 Style/Dir:
@@ -100,6 +127,10 @@ Naming/PredicateName:
     - has_many
     - has_many_actions
 
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
 Style/TrailingCommaInArguments:
   Enabled: true
 
@@ -119,6 +150,12 @@ Layout/SpaceAroundOperators:
   Enabled: true
 
 Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Layout/SpaceBeforeComma:
+  Enabled: true
+
+Layout/SpaceBeforeFirstArg:
   Enabled: true
 
 Layout/SpaceInsideBlockBraces:
