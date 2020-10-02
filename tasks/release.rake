@@ -43,7 +43,4 @@ namespace :release do
   end
 end
 
-#
-# Add chandler as a prerequisite for `rake release`
-#
-task "release:rubygem_push" => ["chandler:push", "release:npm_push"]
+task(:release).enhance ["chandler:push", "release:npm_push"]

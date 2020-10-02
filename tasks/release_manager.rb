@@ -160,7 +160,7 @@ class ReleaseManager
 
   def bump_version_file(version)
     old_content = File.read(gem_version_file)
-    new_content = old_content.gsub!(/^  VERSION = '.*'$/, "  VERSION = '#{version}'")
+    new_content = old_content.gsub!(/^  VERSION = ".*"$/, "  VERSION = \"#{version}\"")
 
     File.open(gem_version_file, "w") { |f| f.puts new_content }
   end
@@ -213,7 +213,7 @@ class ReleaseManager
   end
 
   def gem_version
-    @gem_version ||= File.read(gem_version_file).match(/^  VERSION = '(.*)'$/)[1]
+    @gem_version ||= File.read(gem_version_file).match(/^  VERSION = "(.*)"$/)[1]
   end
 
   def prerelease?(version)
